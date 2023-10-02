@@ -14,8 +14,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const storage = multer.diskStorage({
   destination: `${__dirname}/public/img/` ,
   filename: (req, file, cb) => {
-    const ext = file.mimetype.split("/")[1];
-    cb(null, `${file.originalname}.${ext}`);
+    cb(null, file.originalname);
   },
 });
 const upload = multer({ storage: storage })
